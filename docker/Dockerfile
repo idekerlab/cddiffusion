@@ -5,7 +5,7 @@ RUN conda install -y -c conda-forge networkx
 
 RUN mkdir /tmp/networkheatdiffusion \
          && cd /tmp/networkheatdiffusion \
-         && git clone --depth 1 https://github.com/idekerlab/networkheatdiffusion \
+         && git clone --depth 1 --branch v0.4.0 https://github.com/idekerlab/networkheatdiffusion \
          && cd networkheatdiffusion \
          && /opt/conda/bin/python setup.py bdist_wheel \
          && /opt/conda/bin/pip install dist/networkheatdiffusion*whl \
