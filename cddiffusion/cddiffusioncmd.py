@@ -40,6 +40,9 @@ def _parse_arguments(desc, args):
     parser.add_argument('--time', default=0.1, type=float,
                         help='The upper bound on the exponential '
                              'multiplication performed by diffusion')
+    parser.add_argument('--correct_rank', action='store_true',
+                        help='If set, multiple nodes that have same heat '
+                             'will have same rank')
     return parser.parse_args(args)
 
 
@@ -71,6 +74,7 @@ def run_diffusion(theargs, out_stream=sys.stdout,
     try:
         with redirect_stdout(sys.stderr):
             net = ndex2.create_nice_cx_from_file(theargs.input)
+
             diffuser = networkheatdiffusion.HeatDiffusion()
             resnet = diffuser.run_diffusion(net, time_param=theargs.time,
                                             normalize_laplacian=
@@ -79,6 +83,8 @@ def run_diffusion(theargs, out_stream=sys.stdout,
                                             theargs.input_attribute_name,
                                             output_prefix=
                                             theargs.output_attribute_name,
+                                            correct_rank=
+                                            theargs.correct_rank,
                                             via_service=False)
             # write network as CX to output stream
             finalres = {}
