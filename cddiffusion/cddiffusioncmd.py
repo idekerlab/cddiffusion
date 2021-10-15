@@ -113,7 +113,8 @@ def main(args):
     """
     theargs = _parse_arguments(desc, args[1:])
     try:
-        return run_diffusion(theargs, sys.stdout, sys.stderr)
+        return run_diffusion(theargs, out_stream=sys.stdout,
+                             err_stream=sys.stderr)
     except Exception as e:
         sys.stderr.write('\n\nCaught exception: ' + str(e))
         traceback.print_exc()
