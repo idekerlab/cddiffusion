@@ -2,7 +2,7 @@
 Network Heat Diffusion
 ===================================================
 
-This repository creates a CDAPS compatible Diffusion Docker image using Network Heat Diffusion
+This repository creates a `CDAPS <https://github.com/cytoscape/communitydetection-rest-server>`__ compatible Diffusion Docker image using Network Heat Diffusion
 packaged from https://github.com/idekerlab/networkheatdiffusion
 
 Dependencies
